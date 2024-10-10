@@ -71,7 +71,7 @@ random.seed(seed1)  #*seed設定
 
 # 各サブフォルダ内のファイルを処理
 for i,foldername in enumerate(tqdm(os.listdir(source_dir),position=0)):
-    if i >= learning_num - 1:
+    if i >= learning_num:
         break
     
     tqdm.write(f"Now processing : {foldername}", end="")
@@ -115,7 +115,7 @@ random.seed(seed2)  #*seed設定
 file_rev_list = sorted(os.listdir(source_dir), reverse=True)
 # 各サブフォルダ内のファイルを処理
 for i, foldername in enumerate(tqdm(file_rev_list,position=0)):
-    if i >= validation_num - 1:
+    if i >= validation_num:
         break
     
     tqdm.write(f"Now processing : {foldername}", end="")
