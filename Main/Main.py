@@ -29,7 +29,7 @@ os.makedirs(result_path2,exist_ok=True)
 
 ###*ここから間引き関連###
 #! 各フォルダから間引くファイルの数
-split_num = 500  # 学習用各フォルダからこの数をランダムに選択
+split_num = 1200  # 学習用各フォルダからこの数をランダムに選択
 
 #! 間引く際の乱数seed値
 seed1=42    #学習用
@@ -39,7 +39,7 @@ seed2=78    #検証用
 learning_num=60
 
 #! 検証用データのフォルダ数(seed数*日数)
-validation_num=50
+validation_num=30
 ###*ここまで間引き関連###
 
 
