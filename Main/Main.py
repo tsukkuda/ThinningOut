@@ -8,15 +8,15 @@ from logMaker import logMaker0,logMaker1,logMaker2
 
 ###*ここからパス関連の部分###
 # 成型済みデータフォルダ
-source_dir = 'E:\VScode\ExcelDataMaker_SUMO_py_ver8.0\Main/result'
+source_dir = 'E:\Data\data_formed\hachi_15s'
 
 # 大元の出力先
 base_dir = 'E:\Result_UsedData'
 # 現在の時刻
 current_datetime = datetime.now().strftime('%Y-%m-%d-%Hh%Mm%Ss')
 # 学習用と検証用
-learning_dir='\検証用車両追跡データ\ADV比率3割'
-validation_dir='\車両追跡データ'
+learning_dir='\車両追跡データ'
+validation_dir='\検証用車両追跡データ\ADV比率3割'
 
 # 出力先パス(2種類)
 result_path1=base_dir+'/'+current_datetime+'/usedData'+learning_dir
@@ -29,7 +29,7 @@ os.makedirs(result_path2,exist_ok=True)
 
 ###*ここから間引き関連###
 #! 各フォルダから間引くファイルの数
-split_num = 1200  # 学習用各フォルダからこの数をランダムに選択
+split_num = 1500  # 学習用各フォルダからこの数をランダムに選択
 
 #! 間引く際の乱数seed値
 seed1=42    #学習用
@@ -154,7 +154,7 @@ print()
 print("------------")
 log_path=base_dir+'/'+current_datetime+'/usedData'  #ログ出力先
 #全体ログ
-logMaker0(log_path,current_datetime,split_num,
+logMaker0(log_path,current_datetime,split_num,source_dir,
              learning_num,seed1,whole_data1,after_data1,    #学習データ
              validation_num,seed2,whole_data2,after_data2) #検証データ
 #学習データ詳細ログ

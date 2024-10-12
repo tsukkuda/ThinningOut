@@ -1,7 +1,7 @@
 import os
 
 #概要ログ
-def logMaker0(log_path,current_datetime,split_num,
+def logMaker0(log_path,current_datetime,split_num,source_dir,
              learning_num,seed1,whole_data1,after_data1,    #学習データ
              validation_num,seed2,whole_data2,after_data2): #検証データ
     file_name=current_datetime+"_log.txt"
@@ -11,6 +11,9 @@ def logMaker0(log_path,current_datetime,split_num,
     with open(os.path.join(log_path, file_name), "w") as file:
         #日付
         file.write(f"---Log of {current_datetime}---\n")
+        
+        #生データの情報
+        file.write(f"original data from {source_dir}\n")
         
         #1フォルダあたりのファイル数
         file.write(f"{split_num} files per 1 sim folder\n")
