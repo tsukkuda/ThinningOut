@@ -29,11 +29,13 @@ os.makedirs(result_path2,exist_ok=True)
 
 ###*ここから間引き関連###
 #! 各フォルダから間引くファイルの数
-split_num = 1500  # 学習用各フォルダからこの数をランダムに選択
+split_num = 1000  # 学習用各フォルダからこの数をランダムに選択
 
 #! 間引く際の乱数seed値
-seed1=42    #学習用
-seed2=78    #検証用
+seed1=random.randint(1,9999) #学習用
+seed2=random.randint(1,9999) #検証用
+# seed1=42    #*手動で設定する場合
+# seed2=78    
 
 #! 学習用データのフォルダ数(seed数*日数)
 learning_num=60
