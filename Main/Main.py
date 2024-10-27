@@ -4,11 +4,15 @@ import shutil
 from datetime import datetime
 from tqdm import tqdm
 from logMaker import logMaker0,logMaker1,logMaker2
+from SubMain import SubMain
 
 
 ###*ここからパス関連の部分###
 # 成型済みデータフォルダ
 source_dir = 'E:\Data\data_formed\hachi_15s'
+# 成型済みデータフォルダ #*サブ
+subSource_dir = ''
+mixFlag=False
 
 # 大元の出力先
 base_dir = 'E:\Result_UsedData'
@@ -38,7 +42,10 @@ seed2=random.randint(1,9999) #検証用
 # seed2=78    
 
 #! 学習用データのフォルダ数(seed数*日数)
-learning_num=60
+learning_num=30
+
+#! 学習用データのフォルダ数(seed数*日数) 2
+subLearning_num=30
 
 #! 検証用データのフォルダ数(seed数*日数)
 validation_num=30
@@ -151,7 +158,6 @@ print("thined out csv files for validation data.")
 print()
 ###*ここまで検証データ間引き###
 
-
 ###*ここからログ生成###
 print("------------")
 log_path=base_dir+'/'+current_datetime+'/usedData'  #ログ出力先
@@ -167,6 +173,11 @@ logMaker2(log_path,current_datetime,
              validation_num,seed2,validation_folders,whole_data2,after_data2)
 print("------------")
 ###*ここまでログ作成###
+
+###*ここからmix###
+if mixFlag:
+    SubMain(subSource_dir,current_datetime,split_num,subLearning_num,result_path1)
+###*ここまでmix###
 
 end_time=datetime.now() #終了時間
 
