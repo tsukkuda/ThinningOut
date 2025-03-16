@@ -7,7 +7,7 @@ Main.py
 subMain.py
 logMaker.py
 
-以上を同ディレクトリに置く．
+以上を同ディレクトリに置く．実行ファイルはMain.py．
 
 
 *主にいじる変数[Main.py]
