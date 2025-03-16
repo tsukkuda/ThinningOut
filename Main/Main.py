@@ -1,4 +1,5 @@
 import os
+
 import random
 import shutil
 from datetime import datetime
@@ -8,10 +9,12 @@ from SubMain import SubMain
 
 
 ###*ここからパス関連の部分###
-# 成型済みデータフォルダ
-source_dir = 'E:\Data\data_formed\hachi_15s'
-# 成型済みデータフォルダ #*サブ
-subSource_dir = ''
+# 形成済みデータフォルダ
+source_dir = 'E:\Data\data_formed\SUMO_2_10s'
+
+# 形成済みデータフォルダ #*サブ 上記のデータとは異なる形成データから抽出できる．
+subSource_dir = 'E:\Data\data_formed\hachi_NJ_15s'
+# サブを使うときはTrueに指定する
 mixFlag=False
 
 # 大元の出力先
@@ -42,13 +45,13 @@ seed2=random.randint(1,9999) #検証用
 # seed2=78    
 
 #! 学習用データのフォルダ数(seed数*日数)
-learning_num=30
+learning_num=60
 
 #! 学習用データのフォルダ数(seed数*日数) 2
-subLearning_num=30
+subLearning_num=20
 
 #! 検証用データのフォルダ数(seed数*日数)
-validation_num=30
+validation_num=40
 ###*ここまで間引き関連###
 
 
@@ -108,7 +111,7 @@ for i,foldername in enumerate(tqdm(os.listdir(source_dir),position=0)):
         for file in selected_files:
             shutil.copy(file, result_path1)
     
-    tqdm.write(f"\rprocessed : {foldername} :  {whole_data1[-1]:>5} -> {after_data1[-1]:>5}")
+    tqdm.write(f"\rdone : {foldername} :  {whole_data1[-1]:>5} -> {after_data1[-1]:>5}")
 
 print("thined out csv files for learning data.")
 print()
@@ -122,6 +125,7 @@ random.seed(seed2)  #*seed設定
 
 #逆順にフォルダ名取得
 file_rev_list = sorted(os.listdir(source_dir), reverse=True)
+# file_rev_list = sorted(os.listdir(source_dir))
 # 各サブフォルダ内のファイルを処理
 for i, foldername in enumerate(tqdm(file_rev_list,position=0)):
     if i >= validation_num:

@@ -1,3 +1,7 @@
+
+#* Main.pyとは異なる形成データからも抽出を行うプログラム．
+#* Main.pyの18行目のmixFlag=Trueのとき動作する．
+
 import os
 import random
 import shutil
@@ -43,7 +47,7 @@ validation_foldersAp=validation_folders.append
 
 def SubMain(subSource_dir,current_datetime,split_num,learning_num,result_path1):
     ###*ここから学習データ間引き###
-    print("/n/n#####Start SUB section#####")
+    print("\n\n#####Start SUB section#####")
     print("Now thinning out csv files for learning data...")
 
     random.seed(seed1)  #*seed設定
@@ -87,6 +91,7 @@ def SubMain(subSource_dir,current_datetime,split_num,learning_num,result_path1):
     ###*ここからログ生成###
     print("------------")
     log_path=base_dir+'/'+current_datetime+'/usedData/subMixLog'  #ログ出力先
+    os.makedirs(log_path,exist_ok=True)
     #全体ログ
     logMaker0(log_path,current_datetime,split_num,subSource_dir,
                  learning_num,seed1,whole_data1,after_data1,    #学習データ
@@ -98,4 +103,4 @@ def SubMain(subSource_dir,current_datetime,split_num,learning_num,result_path1):
     print("------------")
     ###*ここまでログ作成###
     
-    print("/n#####Done SUB section#####")
+    print("\n#####Done SUB section#####")
